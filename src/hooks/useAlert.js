@@ -1,5 +1,5 @@
 import { useState } from "react";
-import React, { useState } from "react";
+
 
 const useAlert = () => {
 	const [alert, setAlert] = useState({ show: false, text: "", type: "danger" });

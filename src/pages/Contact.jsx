@@ -3,7 +3,8 @@ import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 import { Fox } from "../models/Fox";
 import Loader from "../components/Loader";
-import useAlert from "../assets/hooks/useAlert";
+import useAlert from "../hooks/useAlert";
+import Alert from "../components/Alert";
 const Contact = () => {
 	const formRef = useRef(null);
 	const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -33,7 +34,11 @@ const Contact = () => {
 			)
 			.then(() => {
 				setIsLoading(false);
-
+				showAlert({
+					show: true,
+					text: "Thank you for your message 😃",
+					type: "success",
+				});
 				//Todo show success message
 				//Todo :Hide an alert
 				setTimeout(() => {
@@ -62,9 +67,11 @@ const Contact = () => {
 	return (
 		<section className="realtive flex lg:flex-row flex-col max-container ">
 			{alert.show && <Alert {...alert} />}
+			{/* <Alert text="Test" type= "danger" /> */}
 			<div className="flex-1 min-w-[50%] flex flex-col">
 				<h1 className="head-text">Get in Touch</h1>
 				<form
+					ref={formRef}
 					action=""
 					onSubmit={handleSubmit}
 					className="w-full flex flex-col gap-7 mt-14"
