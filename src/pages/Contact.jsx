@@ -39,8 +39,7 @@ const Contact = () => {
 					text: "Thank you for your message 😃",
 					type: "success",
 				});
-				//Todo show success message
-				//Todo :Hide an alert
+
 				setTimeout(() => {
 					setCurrentAnimation("idle");
 					setForm({ name: "", email: "", message: "" });
